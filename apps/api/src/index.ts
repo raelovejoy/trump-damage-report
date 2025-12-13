@@ -12,7 +12,7 @@ const app = Fastify({ logger: true });
 
 app.get("/health", async () => ({ ok: true }));
 
-app.get("/incidents", async (req) => {
+app.get("/incidents", async (req: any) => {
   const { date } = (req.query as { date?: string }) ?? {};
   const incidentDate = date ?? new Date().toISOString().slice(0, 10);
 
@@ -54,7 +54,7 @@ app.get("/incidents", async (req) => {
   return { date: incidentDate, incidents };
 });
 
-app.get("/graph", async (req) => {
+app.get("/graph", async (req: any) => {
   const { date } = (req.query as { date?: string }) ?? {};
   const incidentDate = date ?? new Date().toISOString().slice(0, 10);
 
